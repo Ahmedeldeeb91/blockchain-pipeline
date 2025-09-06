@@ -21,6 +21,7 @@
 		<module>ingestor</module>
 		<module>registry</module>
 		<module>persistor</module>
+		<module>api-gateway</module>
 	</modules>
 
 	<properties>
