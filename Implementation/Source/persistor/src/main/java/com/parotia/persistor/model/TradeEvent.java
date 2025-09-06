@@ -35,6 +35,9 @@ public class TradeEvent {
     @Column
     Long eventId; // corresponds to Binance tradeId
 
+    @Column
+    Long eventTime;
+
     @Enumerated(EnumType.STRING)
     TradeSymbol symbol;
 

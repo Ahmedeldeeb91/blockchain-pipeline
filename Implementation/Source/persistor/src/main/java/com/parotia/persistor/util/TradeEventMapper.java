@@ -6,20 +6,31 @@ import org.mapstruct.Named;
 
 import com.parotia.persistor.model.TradeEvent;
 import com.parotia.persistor.model.TradeMessage;
+import com.parotia.persistor.model.TradeRequest;
 import com.parotia.persistor.model.TradeSymbol;
+
+import lombok.extern.slf4j.Slf4j;
 
 @Mapper(componentModel = "spring")
 public interface TradeEventMapper {
 
     @Mapping(target = "symbol", source = "symbol", qualifiedByName = "mapSymbol")
+    @Mapping(target = "isMarket", source = "marketMaker")
+    @Mapping(target = "isIgnore", source = "ignored")
     TradeEvent toTradeEvent(TradeMessage msg);
+
+    @Mapping(target = "symbol", source = "symbol", qualifiedByName = "mapSymbol")
+    @Mapping(target = "isMarket", source = "marketMaker")
+    @Mapping(target = "isIgnore", source = "ignored")
+    TradeEvent toTradeEvent(TradeRequest request);
 
     @Named("mapSymbol")
     default TradeSymbol mapSymbol(String symbol) {
         try {
-            return TradeSymbol.valueOf(symbol);
+            System.out.println("Mapping symbol: " + symbol);
+            return TradeSymbol.valueOf(symbol.toUpperCase());
         } catch (IllegalArgumentException | NullPointerException e) {
-            return TradeSymbol.UNKNOWN; // fallback if enum contains UNKNOWN
+            return TradeSymbol.UNKNOWN;
         }
     }
 }
