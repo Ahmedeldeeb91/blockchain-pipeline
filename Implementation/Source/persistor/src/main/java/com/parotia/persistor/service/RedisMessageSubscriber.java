@@ -5,7 +5,10 @@ import org.springframework.data.redis.connection.MessageListener;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.parotia.persistor.model.TradeEvent;
 import com.parotia.persistor.model.TradeMessage;
+import com.parotia.persistor.repo.TradeEventRepo;
+import com.parotia.persistor.util.TradeEventMapper;
 
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -17,8 +20,8 @@ import lombok.extern.slf4j.Slf4j;
 @FieldDefaults(level = lombok.AccessLevel.PRIVATE, makeFinal = true)
 public class RedisMessageSubscriber implements MessageListener {
     ObjectMapper objectMapper;
-
-    // private final TradeRepository tradeRepository;
+    TradeEventRepo tradeRepo;
+    TradeEventMapper mapper;
 
     @Override
     public void onMessage(Message message, byte[] pattern) {
@@ -27,8 +30,9 @@ public class RedisMessageSubscriber implements MessageListener {
 
         try {
             TradeMessage trade = objectMapper.readValue(msg, TradeMessage.class);
-            // tradeRepository.save(trade);
-            log.info("Trade persisted: {}", trade);
+            TradeEvent tradeEvent = mapper.toTradeEvent(trade);
+            tradeRepo.save(tradeEvent);
+            log.info("Trade persisted: {}", tradeEvent);
         } catch (Exception e) {
             log.error("Failed to persist trade message", e);
         }

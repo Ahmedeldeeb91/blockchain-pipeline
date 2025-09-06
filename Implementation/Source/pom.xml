@@ -17,6 +17,7 @@
 	<description>Parent POM for all blockchain pipeline modules</description>
 
 	<modules>
+		<module>common</module>
 		<module>ingestor</module>
 		<module>registry</module>
 		<module>persistor</module>

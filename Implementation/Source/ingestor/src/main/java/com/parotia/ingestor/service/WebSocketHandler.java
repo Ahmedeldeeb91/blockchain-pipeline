@@ -13,7 +13,7 @@ import org.springframework.web.socket.client.standard.StandardWebSocketClient;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.parotia.ingestor.model.BinanceTradeDto;
+import com.parotia.common.dto.BinanceTradeDto;
 import com.parotia.ingestor.model.TradeMessage;
 import com.parotia.ingestor.util.TradeMapper;
 

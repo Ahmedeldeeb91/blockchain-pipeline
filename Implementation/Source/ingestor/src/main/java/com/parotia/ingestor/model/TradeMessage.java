@@ -1,5 +1,7 @@
 package com.parotia.ingestor.model;
 
+import java.math.BigDecimal;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,9 +12,12 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @FieldDefaults(level = lombok.AccessLevel.PRIVATE)
 public class TradeMessage {
-    String id;
+    long eventId;
+    long eventTime;
     String symbol;
-    double price;
-    long quantity;
+    BigDecimal price;
+    BigDecimal quantity;
     long tradeTime;
+    boolean isMarketMaker;
+    boolean isIgnored;
 }
