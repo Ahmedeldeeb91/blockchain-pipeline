@@ -15,6 +15,12 @@ eureka:
 webSocket:
   uri: wss://stream.binance.com:9443/ws/btcusdt@trade
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+
 topic:
   trade:
     name: trades
