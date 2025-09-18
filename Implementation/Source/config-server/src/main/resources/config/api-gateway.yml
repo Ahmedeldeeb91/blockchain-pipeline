@@ -1,0 +1,26 @@
+server:
+  port: 8080
+spring:
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: persistor-service
+              uri: lb://persistor-service
+              predicates:
+                - Path=/api/v1/trades/**
+            - id: config-server
+              uri: lb://config-server
+              predicates:
+                - Path=/config/**
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
