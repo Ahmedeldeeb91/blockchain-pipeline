@@ -1,4 +1,4 @@
-package com.parotia.ingestor.model;
+package com.parotia.common.dto;
 
 import java.math.BigDecimal;
 

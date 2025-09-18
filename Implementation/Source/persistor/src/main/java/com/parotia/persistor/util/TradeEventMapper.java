@@ -4,12 +4,10 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 
+import com.parotia.common.dto.TradeMessage;
 import com.parotia.persistor.model.TradeEvent;
-import com.parotia.persistor.model.TradeMessage;
 import com.parotia.persistor.model.TradeRequest;
 import com.parotia.persistor.model.TradeSymbol;
-
-import lombok.extern.slf4j.Slf4j;
 
 @Mapper(componentModel = "spring")
 public interface TradeEventMapper {

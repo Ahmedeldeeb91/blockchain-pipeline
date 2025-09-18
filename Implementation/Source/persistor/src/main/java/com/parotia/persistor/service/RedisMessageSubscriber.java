@@ -5,8 +5,8 @@ import org.springframework.data.redis.connection.MessageListener;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.parotia.common.dto.TradeMessage;
 import com.parotia.persistor.model.TradeEvent;
-import com.parotia.persistor.model.TradeMessage;
 import com.parotia.persistor.repo.TradeEventRepo;
 import com.parotia.persistor.util.TradeEventMapper;
 

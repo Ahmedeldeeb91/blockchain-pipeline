@@ -1,4 +1,4 @@
-package com.parotia.common.dto;
+package com.parotia.ingestor.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
